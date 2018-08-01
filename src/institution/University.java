@@ -11,11 +11,8 @@ public class University {
     private Student student;
     private List<Student> students = students = new ArrayList<>();;
 
-
-
     public University(String name) {
         this.name = name;
-
     }
 
     public University(){
