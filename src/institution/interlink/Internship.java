@@ -19,22 +19,22 @@ public class Internship {
         interns = new ArrayList<>();
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudent(List students) {
+        this.interns = students;
     }
 
-    public void addIntern(){
+    public List<Student> addIntern(){
         for (Student student: university.getStudents()) {
             if(student.getKnowledge().getLevel() > university.getAverageKnowledgeAtTheUniversity()) {
                 interns.add(student);
             }
         }
+        return interns;
     }
 
     public String getInterns() {
-        addIntern();
         String allInterns = "";
-        for(Student intern : interns){
+        for(Student intern : addIntern()){
             allInterns += intern.toString() + "\n";
         }
         return allInterns;

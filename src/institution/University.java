@@ -9,7 +9,8 @@ public class University {
 
     private String name;
     private Student student;
-    private List<Student> students = students = new ArrayList<>();;
+    private List<Student> students = students = new ArrayList<>();
+    private double averageKnowledgeAtTheUniversity;
 
     public University(String name) {
         this.name = name;
@@ -22,11 +23,11 @@ public class University {
         return students;
     }
 
-    public void addStudent(Student student) {
-        students.add(student);
+    public void addStudent(List students) {
+        this.students = students;
     }
 
-    public double sumOfKnowledgeLevel(){
+    private double sumOfKnowledgeLevel(){
         int sum = 0;
         for (Student student : students) {
             sum += student.getKnowledge().getLevel();
@@ -34,7 +35,17 @@ public class University {
         return sum;
     }
 
+    private double calculationAverageKnowledgeAtTheUniversity(){
+        try {
+            averageKnowledgeAtTheUniversity = sumOfKnowledgeLevel()/students.size();
+        } catch (ArithmeticException e) {
+            System.out.println("Список студентів пустий");
+        }
+        averageKnowledgeAtTheUniversity = sumOfKnowledgeLevel()/students.size();
+        return averageKnowledgeAtTheUniversity;
+    }
+
     public double getAverageKnowledgeAtTheUniversity(){
-        return sumOfKnowledgeLevel()/students.size();
+        return calculationAverageKnowledgeAtTheUniversity();
     }
 }
